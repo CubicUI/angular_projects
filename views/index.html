@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Angular Project 1</title>
+    </head>
+    
+    <!--Declaring angular application-->
+    <body ng-app="appName"> 
+        <h1>Learning Scope Variables</h1>
+    
+        <div ng-controller="appCtrl">
+            Two way data binding {{header}}
+            <button ng-click="test()">change header</button>
+            One way data binding {{::header}}
+        </div>
+        
+        <!--The dependencies need to be added in hierarchial order-->
+        <script type="text/javascript" src="/node_modules/angular/angular.js"></script>
+        <script type="text/javascript" src="/scripts/app.js"></script>
+        <script type="text/javascript" src="/scripts/controllers/appCtrl.js"></script>
+    </body>
+</html>
