@@ -2,21 +2,86 @@
 <html>
     <head>
         <title>Angular Project 1</title>
+        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
     </head>
     
     <!--Declaring angular application-->
     <body ng-app="appName"> 
         <h1>Learning Scope Variables</h1>
     
+        <!--Calling the appCtrl for this div-->
         <div ng-controller="appCtrl">
-            Two way data binding {{header}}
-            <button ng-click="test()">change header</button>
-            One way data binding {{::header}}
+            <h2>From app Ctrl</h2>
+            Two way data binding {{header}}<br>
+            One way data binding {{::header}}<br>
+            <button ng-click="test()" class="btn btn-info">change header</button>
+        </div>
+        
+        <!--Calling the personCtrl for this div-->
+        <div ng-controller="personCtrl">
+            <h1>Person Form</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <input type="text" ng-model="personModel.firstName" placeholder="Enter First Name">
+                    </div>
+                     <div class="col-md-2">
+                        <input type="text" ng-model="personModel.lastName" placeholder="Enter Last Name">
+                    </div>
+                     <div class="col-md-2">
+                        <input type="text" ng-model="personModel.phoneNumber" placeholder="Enter Phone Number">
+                    </div>
+                     <div class="col-md-2">
+                        <input type="text" ng-model="personModel.address" placeholder="Enter Address">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>First Name</label>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Last Name</label>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Phone Number</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Address</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        {{personModel.firstName}}
+                    </div>
+                    <div class="col-md-2">
+                        {{personModel.lastName}}
+                    </div>
+                    <div class="col-md-2">
+                        {{personModel.phoneNumber}}
+                    </div>
+                    <div class="col-md-4">
+                        {{personModel.address}}
+                    </div>
+                </div>
+            </div>
+            
+            <!--ng-show and ng-if testing-->
+            <div ng-show="forNgShow">
+                 <!--If this is switched to false, then the text will disappear but it will still be added into the DOM element-->
+                This content is for testing ng show
+            </div>
+            <div ng-if="forNgIf">
+                <!--If this is switched to false, then the text will disappear and it will not be added into the DOM element-->
+                This content is for testing ng if
+            </div>
+            <button ng-click="toggleShow()" class="btn btn-primary">Toggle Show</button>
+            <button ng-click="toggleIf()" class="btn btn-danger">Toggle If</button>
         </div>
         
         <!--The dependencies need to be added in hierarchial order-->
         <script type="text/javascript" src="/node_modules/angular/angular.js"></script>
         <script type="text/javascript" src="/scripts/app.js"></script>
         <script type="text/javascript" src="/scripts/controllers/appCtrl.js"></script>
+        <script type="text/javascript" src="/scripts/controllers/personCtrl.js"></script>
     </body>
 </html>
