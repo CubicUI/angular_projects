@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-md-2">
+        <label>First Name</label>
+    </div>
+    <div class="col-md-2">
+        <label>Last Name</label>
+    </div>
+    <div class="col-md-2">
+        <label>Phone Number</label>
+    </div>
+    <div class="col-md-4">
+        <label>Address</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <input type="text" class="form-control" ng-model="search" placeholder="search">
+    </div>
+</div>
+<div class="row" ng-repeat="person in personArray | filter:search">
+    <div class="col-md-2">
+        {{person.firstName}}
+    </div>
+    <div class="col-md-2">
+        {{person.lastName}}
+    </div>
+    <div class="col-md-2">
+        {{person.phoneNumber}}
+    </div>
+    <div class="col-md-4">
+        {{person.address}}
+    </div>
+</div>
+
+<!--
+<ol>
+    <li ng-repeat="person in personArray">{{person.lastName}}, {{person.firstName}}</li>
+</ol>-->

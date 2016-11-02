@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Directive Testing</title>
+        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    </head>
+    
+    <!--Declaring angular application-->
+    <body ng-app="appName"> 
+    <!--
+        <div ng-controller='appCtrl'>
+            Header Value from appCtrl: {{::header}}
+            <sample-header></sample-header>
+        </div>
+        
+        <sample-header></sample-header>
+        -->
+        
+        <h1>Person Array</h1>
+        
+        <person-form></person-form>
+        <person-table></person-table>
+        
+        <!-- <div ng-controller="personCtrl"></div>-->
+           <!-- <ol>
+                <li ng-repeat="person in personArray">{{person.lastName}}, {{person.firstName}}</li>
+            </ol>-->
+
+        
+        <script type="text/javascript" src="/node_modules/angular/angular.js"></script>
+        <script type="text/javascript" src="/scripts/app.js"></script>
+        <script type="text/javascript" src="/scripts/controllers/appCtrl.js"></script>
+        <script type="text/javascript" src="/scripts/controllers/personCtrl.js"></script>
+        <script type='text/javascript' src="/scripts/directives/firstDirective.js"></script>
+        <script type='text/javascript' src='/scripts/directives/personForm.js'></script>
+        <script type='text/javascript' src='/scripts/directives/personTable.js'></script>
+    </body>
+</html>

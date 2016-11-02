@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/'));
 //you need at least 1 router - this will be your home page. You can use the 
 //send is for string messages. redirect can be used for links
 app.get('/', function(req, res) {
-    res.redirect('/views/index.html');
+    res.redirect('/views/index2.html');
 })
 
 /*app.get('/landing', function(req, res) {

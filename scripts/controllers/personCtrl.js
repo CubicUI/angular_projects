@@ -30,4 +30,42 @@ angular.module("appName")
         $scope.personModel.lastName = "Obama";
         $scope.personModel.phoneNumber = "202-042-1010";
         $scope.personModel.address = "1600 Pennsylvania Ave NW";
+        
+        $scope.personArray = [
+            {
+                firstName: "Sterling",
+                lastName: "Archer",
+                phoneNumber: "111-111-1111",
+                address: "New York"
+            },
+            {
+                firstName: "Bob",
+                lastName: "Burger",
+                phoneNumber: "222-222-2222",
+                address: "California"
+            },
+            {
+                firstName: "Michael",
+                lastName: "Jordan",
+                phoneNumber: "333-333-3333",
+                address: "Chicago"  
+            }
+        ];
+        
+        $scope.personForm = {
+            addPerson:function() {
+//                    alert("from the personForm.js");
+                var personObj = {
+                    firstName: $scope.personModel.firstName,
+                    lastName: $scope.personModel.lastName,
+                    phoneNumber: $scope.personModel.phoneNumber,
+                    address: $scope.personModel.address
+                };
+                $scope.personArray.push(personObj);
+//                console.log(personObj);
+            }
+        }
+        
+//        console.log($scope.personArray);f
+        
     }]);

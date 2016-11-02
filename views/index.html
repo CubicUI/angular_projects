@@ -78,10 +78,18 @@
             <button ng-click="toggleIf()" class="btn btn-danger">Toggle If</button>
         </div>
         
+        <div container>
+            <h1>Learning about directives</h1>
+                As Element <sample-header></sample-header><br>
+               <!-- As Attribute <div sample-header></div><br>
+                As Class <div class='sample-header'></div>-->
+        </div>
+        
         <!--The dependencies need to be added in hierarchial order-->
         <script type="text/javascript" src="/node_modules/angular/angular.js"></script>
         <script type="text/javascript" src="/scripts/app.js"></script>
         <script type="text/javascript" src="/scripts/controllers/appCtrl.js"></script>
         <script type="text/javascript" src="/scripts/controllers/personCtrl.js"></script>
+        <script type='text/javascript' src="/scripts/directives/firstDirective.js"></script>
     </body>
 </html>
