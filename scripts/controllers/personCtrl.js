@@ -1,6 +1,6 @@
 "use strict";
 angular.module("appName")
-    .controller("personCtrl",["$scope",function($scope){
+    .controller("personCtrl",["$scope", "personService", function($scope, personService){
         //we're creating a json object for person form
         $scope.personModel = {
             firstName : "",
@@ -9,7 +9,7 @@ angular.module("appName")
             address : "",
         };
         
-        $scope.forNgShow = true;
+        /*$scope.forNgShow = true;
         $scope.forNgIf = true;
         
         $scope.toggleShow = function() {
@@ -26,34 +26,35 @@ angular.module("appName")
             $scope.forNgIf = !$scope.forNgIf;
         }
         
-        $scope.personModel.firstName = "Barack";
+        /*$scope.personModel.firstName = "Barack";
         $scope.personModel.lastName = "Obama";
         $scope.personModel.phoneNumber = "202-042-1010";
-        $scope.personModel.address = "1600 Pennsylvania Ave NW";
+        $scope.personModel.address = "1600 Pennsylvania Ave NW";*/
         
-        $scope.personArray = [
-            {
-                firstName: "Sterling",
-                lastName: "Archer",
-                phoneNumber: "111-111-1111",
-                address: "New York"
-            },
-            {
-                firstName: "Bob",
-                lastName: "Burger",
-                phoneNumber: "222-222-2222",
-                address: "California"
-            },
-            {
-                firstName: "Michael",
-                lastName: "Jordan",
-                phoneNumber: "333-333-3333",
-                address: "Chicago"  
+        personService.personObj = $scope.personModel;
+        $scope.personArray = personService.personArray;
+        
+//        console.log(personFactory.getX());
+//        personFactory.getElement(0);
+       
+        
+        $scope.personTable={
+            sortBy: 'firstName',
+            sortOrder: false,
+            toggleOrder:function(name) {
+                if($scope.personTable.sortBy != name) {
+                    $scope.personTable.sortBy = name;
+                    $scope.personTable.sortOrder = false; 
+                } else {
+                    $scope.personTable.sortOrder = !$scope.personTable.sortOrder;   
+                }
             }
-        ];
+        } //added for sorting 11/01
         
-        $scope.personForm = {
-            addPerson:function() {
+        
+        $scope.personForm = { addPerson:personService.addPerson
+            //MOVED TO THE PERSON FACTORY
+            /*addPerson:function() {
 //                    alert("from the personForm.js");
                 var personObj = {
                     firstName: $scope.personModel.firstName,
@@ -61,10 +62,11 @@ angular.module("appName")
                     phoneNumber: $scope.personModel.phoneNumber,
                     address: $scope.personModel.address
                 };
-                $scope.personArray.push(personObj);
+                personFactory.personArray.push(personObj);
+//                $scope.personArray.push(personObj);
 //                console.log(personObj);
-            }
-        }
+            }*/
+        };
         
 //        console.log($scope.personArray);f
         
