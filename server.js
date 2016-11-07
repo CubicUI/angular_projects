@@ -1,6 +1,41 @@
 var express = require('express'); //express server required
+var bodyParser = require('body-parser');
+var mysql = require('mysql');
+var connection = require('express-myconnection');
 var app = express(); //variable with that function
  
+app.use(bodyParser.json()); //to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({ //to support URL-encoded bodies
+    extended: true
+}));
+
+//Create SQL Connection
+app.use(connection(mysql, {
+    host: 'localhost',
+    user: 'personuser',
+    password: 'personuser123',
+    database: 'persontable'
+}, 'request'));
+
+app.get('/service/person', function(req,res,next){
+    var ids = [];
+    var query = "SELECT * FROM personinfo";
+    
+    req.getConnection(function(err, connection) {
+        if (err) return next(err);
+        
+        connection.query(query,ids, function (err, results) {
+            if (err) {
+                console.log(err);
+                return next("Myssql error, check query)");
+            }
+            res.json(results);
+        });
+    });
+});
+
+
+
 //Hosting static files
 app.use(express.static(__dirname + '/'));
 
