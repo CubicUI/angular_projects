@@ -46,7 +46,7 @@ angular.module("appName").service("personService", [function(){
 
     var that=this;
 
-    this.test=function(){
+    this.test=function() {
         console.log("from clouser");
         console.log(this.personObj);
     }
