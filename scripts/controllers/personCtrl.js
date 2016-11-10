@@ -3,6 +3,7 @@ angular.module("appName")
     .controller("personCtrl",["$scope", "personService", function($scope, personService){
         //we're creating a json object for person form
         $scope.personModel = {
+            personInfoId : "",
             firstName : "",
             lastName : "",
             phoneNumber : "",
@@ -32,14 +33,15 @@ angular.module("appName")
         $scope.personModel.address = "1600 Pennsylvania Ave NW";*/
         
         personService.personObj = $scope.personModel;
-        $scope.personArray = personService.personArray;
+//        $scope.personArray = personService.personArray;
+        $scope.personArray = [];
+        updatePersonList();
         
 //        console.log(personFactory.getX());
 //        personFactory.getElement(0);
-       
         
         $scope.personTable={
-            sortBy: 'firstName',
+            sortBy: 'firstname',
             sortOrder: false,
             toggleOrder:function(name) {
                 if($scope.personTable.sortBy != name) {
@@ -49,24 +51,33 @@ angular.module("appName")
                     $scope.personTable.sortOrder = !$scope.personTable.sortOrder;   
                 }
             }
-        } //added for sorting 11/01
+        }; //added for sorting 11/01
         
-        
-        $scope.personForm = { addPerson:personService.addPerson
-            //MOVED TO THE PERSON FACTORY
-            /*addPerson:function() {
-//                    alert("from the personForm.js");
-                var personObj = {
-                    firstName: $scope.personModel.firstName,
-                    lastName: $scope.personModel.lastName,
-                    phoneNumber: $scope.personModel.phoneNumber,
-                    address: $scope.personModel.address
-                };
-                personFactory.personArray.push(personObj);
-//                $scope.personArray.push(personObj);
-//                console.log(personObj);
-            }*/
+        $scope.personForm = { /*addPerson:personService.addPerson*/
+            addPerson:function() {
+                personService.addPerson();
+                updatePersonList();
+            },
+            displayConsole:function(id1) {
+                //console.log("id1:"+id1);
+                personService.displayConsole(id1);
+                //updatePersonList2(id1);
+            }
         };
+        
+        //2016-11-10
+        function updatePersonList() {
+            var personListPromise = personService.getPersonList();
+            personListPromise.then(function(response){
+               $scope.personArray = response; 
+            });
+        }
+       /* function updatePersonList2(id) {
+            var personListPromise = personService.getPersonId(id);
+            personListPromise.then(function(response){
+               $scope.personArray = response; 
+            });
+        }*/
         
 //        console.log($scope.personArray);f
         

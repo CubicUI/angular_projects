@@ -1,7 +1,8 @@
 'use strict';
-angular.module("appName").service("personService", [function(){
+angular.module("appName").service("personService", ["$http", function($http){
     //same declaration as controller but no scope variable
     this.personObj={
+        personInfoId:"",
         firstName:"",
         lastName:"",
         phoneNumber:"",
@@ -9,8 +10,9 @@ angular.module("appName").service("personService", [function(){
     }
         
     this.addPerson = addPerson;
+    this.displayConsole = displayConsole;
         
-    this.personArray = [
+   /* this.personArray = [
         {
             firstName: "Sterling",
             lastName: "Archer",
@@ -35,16 +37,46 @@ angular.module("appName").service("personService", [function(){
             phoneNumber: "123-123-1234",
             address: "Mt. Olympus"
         } 
-    ];
+    ];*/
     
-    this.getElement = function(index) {
+    /*this.getElement = function(index) {
         var length = this.personArray.length;
         if(index < length) {
             console.log(this.personArray[index].firstName);
         }
-    }
+    }*/
 
     var that=this;
+        
+    this.getPersonList = function() {
+        return $http({
+          method:"GET",
+            url:"/service/person"
+        }).then(function(result){
+//            that.personArray = result.data
+            return result.data
+        });
+    }
+    
+    this.postPersonList = function(dataParam) {
+        return $http({
+            method:"POST",
+            url:"/service/person",
+            data:dataParam
+        }).then(function(result){
+            return result.status
+        });
+    }
+    
+    this.getPersonId = function(id) {
+        console.log("id: "+id);
+        return $http({
+            method:"GET",
+            url:"/service/person/"+id,
+        }).then(function(result){
+            console.log(result.data);
+        });
+    }
 
     this.test=function() {
         console.log("from clouser");
@@ -55,14 +87,20 @@ angular.module("appName").service("personService", [function(){
 //        this.personObj="random";
 //        console.log(that.personObj);
         var newPersonObj = {
-            firstName: that.personObj.firstName,
-            lastName: that.personObj.lastName,
-            phoneNumber: that.personObj.phoneNumber,
+            personinfoid: that.personObj.personInfoId,
+            firstname: that.personObj.firstName,
+            lastname: that.personObj.lastName,
+            phone: that.personObj.phoneNumber,
             address: that.personObj.address            
         }
-        that.personArray.push(newPersonObj);
+//        that.personArray.push(newPersonObj);
+        that.postPersonList(newPersonObj);
+    }
+    
+    function displayConsole(id2) {
+        //console.log("id2:"+id2);
+        that.getPersonId(id2);
     }
     
 //    alert('from services');
-    
 }]);

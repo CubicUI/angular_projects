@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-md-2">
-        <label ng-click="personTable.toggleOrder('firstName')">First Name</label>
+        <label ng-click="personTable.toggleOrder('firstname')">First Name</label>
     </div>
     <div class="col-md-2">
-        <label ng-click="personTable.toggleOrder('lastName')">Last Name</label>
+        <label ng-click="personTable.toggleOrder('lastname')">Last Name</label>
     </div>
     <div class="col-md-2">
-        <label ng-click="personTable.toggleOrder('phoneNumber')">Phone Number</label>
+        <label ng-click="personTable.toggleOrder('phone')">Phone Number</label>
     </div>
     <div class="col-md-4">
         <label ng-click="personTable.toggleOrder('address')">Address</label>
@@ -19,16 +19,19 @@
 </div>
 <div class="row" ng-repeat="person in personArray | filter:search | orderBy:personTable.sortBy:personTable.sortOrder">
     <div class="col-md-2">
-        {{person.firstName}}
+        {{person.firstname}}
     </div>
     <div class="col-md-2">
-        {{person.lastName}}
+        {{person.lastname}}
     </div>
     <div class="col-md-2">
-        {{person.phoneNumber}}
+        {{person.phone}}
     </div>
-    <div class="col-md-4">
+    <div class="col-md-2">
         {{person.address}}
+    </div>
+    <div class="col-md-2">
+        <button type="button" class="btn btn-info" ng-click="personForm.displayConsole(person.personinfoid)">Display</button>
     </div>
 </div>
 
