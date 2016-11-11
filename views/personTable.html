@@ -8,8 +8,11 @@
     <div class="col-md-2">
         <label ng-click="personTable.toggleOrder('phone')">Phone Number</label>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-2">
         <label ng-click="personTable.toggleOrder('address')">Address</label>
+    </div>
+    <div class="col-md-2">
+        <label ng-click="personTable.toggleOrder('email')">email</label>
     </div>
 </div>
 <div class="row">
@@ -29,6 +32,9 @@
     </div>
     <div class="col-md-2">
         {{person.address}}
+    </div>
+    <div class="col-md-2">
+        {{person.email}}
     </div>
     <div class="col-md-2">
         <button type="button" class="btn btn-info" ng-click="personForm.displayConsole(person.personinfoid)">Display</button>

@@ -3,11 +3,12 @@ angular.module("appName")
     .controller("personCtrl",["$scope", "personService", function($scope, personService){
         //we're creating a json object for person form
         $scope.personModel = {
-            personInfoId : "",
-            firstName : "",
-            lastName : "",
-            phoneNumber : "",
-            address : "",
+            personInfoId: "",
+            firstName: "",
+            lastName: "",
+            phoneNumber: "",
+            address: "",
+            email: "",
         };
         
         /*$scope.forNgShow = true;
@@ -58,11 +59,7 @@ angular.module("appName")
                 personService.addPerson();
                 updatePersonList();
             },
-            displayConsole:function(id1) {
-                //console.log("id1:"+id1);
-                personService.displayConsole(id1);
-                //updatePersonList2(id1);
-            }
+            displayConsole:personService.getPersonId
         };
         
         //2016-11-10
@@ -72,13 +69,13 @@ angular.module("appName")
                $scope.personArray = response; 
             });
         }
-       /* function updatePersonList2(id) {
-            var personListPromise = personService.getPersonId(id);
-            personListPromise.then(function(response){
-               $scope.personArray = response; 
-            });
-        }*/
         
+        /*$scope.test = function(){
+            return "test";
+        }
+        console.log($scope.test;
+        console.log($scope.test());*/
+                    
 //        console.log($scope.personArray);f
         
     }]);

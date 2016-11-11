@@ -6,11 +6,12 @@ angular.module("appName").service("personService", ["$http", function($http){
         firstName:"",
         lastName:"",
         phoneNumber:"",
-        address:""
+        address:"",
+        email: ""
     }
         
     this.addPerson = addPerson;
-    this.displayConsole = displayConsole;
+  //  this.displayConsole = displayConsole;
         
    /* this.personArray = [
         {
@@ -91,16 +92,18 @@ angular.module("appName").service("personService", ["$http", function($http){
             firstname: that.personObj.firstName,
             lastname: that.personObj.lastName,
             phone: that.personObj.phoneNumber,
-            address: that.personObj.address            
+            address: that.personObj.address,  
+            email: that.personObj.email
         }
 //        that.personArray.push(newPersonObj);
         that.postPersonList(newPersonObj);
     }
     
-    function displayConsole(id2) {
-        //console.log("id2:"+id2);
-        that.getPersonId(id2);
-    }
+
+//    function displayConsole(id2) {
+//        //console.log("id2:"+id2);
+//        that.getPersonId(id2);
+//    }
     
 //    alert('from services');
 }]);

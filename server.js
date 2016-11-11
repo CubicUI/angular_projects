@@ -18,7 +18,7 @@ app.use(connection(mysql, {
     database: 'persontable'
 }, 'request'));
 
-var getPostObj = {
+var getPostObj = { //add
     person: {
         query: "INSERT INTO personinfo SET ?",
         ids: [],
@@ -31,7 +31,7 @@ var getPostObj = {
     }
 }
 
-var getPutObj = {
+var getPutObj = { //edit
     person: {
         query:"UPDATE personinfo SET ? WHERE personinfoid = ?",
         ids: ["personid"],
@@ -45,7 +45,7 @@ var getPutObj = {
 }
 
 //json object that contains the parameters for calling the database records
-var getServiceObj = {
+var getServiceObj = { //retrieve
     person: {
         query:"SELECT * FROM personinfo",
         ids:[],
@@ -54,7 +54,7 @@ var getServiceObj = {
     personID: {
         url: basePath+"/person/:personid",
         ids: ["personid"],
-        query: "SELECT * FROM personinfo where personinfoid=?"
+        query: "SELECT * FROM personinfo WHERE personinfoid=?"
     },
     account: {
         query:"SELECT * FROM account",
@@ -73,7 +73,7 @@ var getServiceObj = {
     }
 };
 
-var getDeleteObj = {
+var getDeleteObj = { //delete
     account: {
         query: "DELETE FROM account WHERE accountid = ?",
         ids: ["accountid"],
