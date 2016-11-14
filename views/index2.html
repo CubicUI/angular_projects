@@ -21,7 +21,7 @@
         <sample-header></sample-header>
         -->
         
-        <h1>Person Array</h1>
+        <h1>Person Table</h1>
         
         <person-form></person-form>
         <person-table></person-table>
@@ -31,6 +31,8 @@
                 <li ng-repeat="person in personArray">{{person.lastName}}, {{person.firstName}}</li>
             </ol>-->
 
+        <h1>EDIT FORM</h1>
+        <person-form-edit></person-form-edit>
         
         <script type="text/javascript" src="/node_modules/angular/angular.js"></script>
         <script type="text/javascript" src="/scripts/app.js"></script>
@@ -41,5 +43,6 @@
         <script type='text/javascript' src='/scripts/directives/personTable.js'></script>
         <script type='text/javascript' src="/scripts/services/personService.js"></script>
         <script type='text/javascript' src='/scripts/services/personFactory.js'></script>
+        <script type='text/javascript' src='/scripts/directives/personFormEdit.js'></script>
     </body>
 </html>

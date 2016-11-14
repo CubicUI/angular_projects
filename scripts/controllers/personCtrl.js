@@ -11,6 +11,21 @@ angular.module("appName")
             email: "",
         };
         
+        $scope.personModelEdit = {
+            personInfoId: "",
+            firstName: "",
+            lastName: "",
+            phoneNumber: "",
+            address: "",
+            email: "",
+        };
+        
+        $scope.resetPersonModel = {};
+        function reset() {
+            $scope.personModel = angular.copy($scope.resetPersonModel);
+            personService.personObj = $scope.personModel;
+        };
+        
         /*$scope.forNgShow = true;
         $scope.forNgIf = true;
         
@@ -56,10 +71,28 @@ angular.module("appName")
         
         $scope.personForm = { /*addPerson:personService.addPerson*/
             addPerson:function() {
-                personService.addPerson();
-                updatePersonList();
+                personService.addPerson().then(function(){
+                    updatePersonList();
+                    reset();
+                });
             },
-            displayConsole:personService.getPersonId
+            displayConsole:personService.getPersonId,
+            deletePerson: function(id) {
+                personService.deletePersonId(id).then(function(){
+                    updatePersonList();
+                });
+            },
+            editPerson: function(object) {
+                console.log(object);
+                $scope.personModelEdit = object;
+            },
+            updatePerson: function(object) {
+                console.log(object);
+                personService.putPersonList(object).then(function(){
+                    updatePersonList();
+                    reset();
+                });
+            }
         };
         
         //2016-11-10
@@ -69,13 +102,12 @@ angular.module("appName")
                $scope.personArray = response; 
             });
         }
+
         
         /*$scope.test = function(){
             return "test";
         }
         console.log($scope.test;
         console.log($scope.test());*/
-                    
-//        console.log($scope.personArray);f
-        
+                        
     }]);

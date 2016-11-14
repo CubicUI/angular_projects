@@ -1,5 +1,10 @@
 <div class="row">
     <div class="col-md-2">
+        <input type="text" class="form-control" ng-model="search" placeholder="search">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
         <label ng-click="personTable.toggleOrder('firstname')">First Name</label>
     </div>
     <div class="col-md-2">
@@ -11,13 +16,8 @@
     <div class="col-md-2">
         <label ng-click="personTable.toggleOrder('address')">Address</label>
     </div>
-    <div class="col-md-2">
-        <label ng-click="personTable.toggleOrder('email')">email</label>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-2">
-        <input type="text" class="form-control" ng-model="search" placeholder="search">
+    <div class="col-md-3">
+        <label ng-click="personTable.toggleOrder('email')">Email</label>
     </div>
 </div>
 <div class="row" ng-repeat="person in personArray | filter:search | orderBy:personTable.sortBy:personTable.sortOrder">
@@ -37,7 +37,8 @@
         {{person.email}}
     </div>
     <div class="col-md-2">
-        <button type="button" class="btn btn-info" ng-click="personForm.displayConsole(person.personinfoid)">Display</button>
+        <button type="button" class="btn btn-info" ng-click="personForm.editPerson(person)">Edit</button>
+        <button type="button" class="btn btn-danger" ng-click="personForm.deletePerson(person.personinfoid)">Delete</button>
     </div>
 </div>
 

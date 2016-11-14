@@ -74,10 +74,15 @@ var getServiceObj = { //retrieve
 };
 
 var getDeleteObj = { //delete
+    person: {
+        query: "DELETE FROM personinfo WHERE personinfoid = ?",
+        ids: ["personid"],
+        url: basePath + "/person/:personid"
+    },
     account: {
         query: "DELETE FROM account WHERE accountid = ?",
         ids: ["accountid"],
-        url: basePath + "/account/:accountid"
+        url: basePath + "/accound/:accountid"
     }
 }
 

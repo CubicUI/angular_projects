@@ -70,12 +70,32 @@ angular.module("appName").service("personService", ["$http", function($http){
     }
     
     this.getPersonId = function(id) {
-        console.log("id: "+id);
+//        console.log("id: "+id);
         return $http({
             method:"GET",
             url:"/service/person/"+id,
         }).then(function(result){
-            console.log(result.data);
+//            console.log(result.data);
+            return result.data;
+        });
+    }
+    
+    this.deletePersonId = function(id) {
+        return $http({
+            method:"DELETE",
+            url:"/service/person/"+id
+        }).then(function(result){
+            return result.data;
+        });
+    }
+    
+    this.putPersonList = function(dataParam) {
+        return $http({
+            method:"PUT",
+            url:"/service/person/" + dataParam.personinfoid,
+            data:dataParam
+        }).then(function(result){
+            return result.status
         });
     }
 
@@ -88,7 +108,6 @@ angular.module("appName").service("personService", ["$http", function($http){
 //        this.personObj="random";
 //        console.log(that.personObj);
         var newPersonObj = {
-            personinfoid: that.personObj.personInfoId,
             firstname: that.personObj.firstName,
             lastname: that.personObj.lastName,
             phone: that.personObj.phoneNumber,
@@ -96,7 +115,7 @@ angular.module("appName").service("personService", ["$http", function($http){
             email: that.personObj.email
         }
 //        that.personArray.push(newPersonObj);
-        that.postPersonList(newPersonObj);
+        return that.postPersonList(newPersonObj);
     }
     
 
