@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unit Testing Demo</title>
+    </head>
+    <body ng-app="appName">
+        <div ng-controller="samplePersonCtrl">
+            {{firstName}} {{lastName}}
+            <br>
+            <button type="button" ng-click="update()">update</button>
+            <sample-person-dir></sample-person-dir>
+        </div>        
+        
+        <script type="text/javascript" src="/node_modules/angular/angular.js"></script>
+        <script type="text/javascript" src="/scripts/app.js"></script>
+        <script type="text/javascript" src="/scripts/services/samplePersonService.js"></script>
+        <script type="text/javascript" src="/scripts/controllers/samplePersonCtrl.js"></script>
+        <script type="text/javascript" src="/scripts/directives/samplePerson.js"></script>
+    </body>
+</html>
